@@ -251,8 +251,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4244840}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19101122, y: 0.000000026041276, z: -0.000000005067478, w: 0.9815879}
-  m_LocalPosition: {x: 487.7829, y: 3.6255553, z: 531.5525}
+  m_LocalRotation: {x: 0.19977985, y: -6.9197806e-23, z: 1.4108747e-23, w: 0.9798408}
+  m_LocalPosition: {x: 487.7829, y: 3.6255553, z: 531.74634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -683,8 +683,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746943520}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19101118, y: 0.000000026041269, z: -0.000000005067476, w: 0.9815879}
-  m_LocalPosition: {x: 487.7829, y: 3.6255553, z: 531.5525}
+  m_LocalRotation: {x: 0.19977984, y: -6.8876424e-23, z: 1.2532503e-23, w: 0.9798408}
+  m_LocalPosition: {x: 487.7829, y: 3.6255553, z: 531.74634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -800,13 +800,13 @@ MonoBehaviour:
   Radius: 2.37
   Orbits:
     Top:
-      Radius: 2
+      Radius: 1
       Height: 5
     Center:
       Radius: 4
       Height: 2.25
     Bottom:
-      Radius: 2.5
+      Radius: 1
       Height: 0.1
     SplineCurvature: 0.5
   RecenteringTarget: 2
@@ -1167,6 +1167,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  playerCamera: {fileID: 4244844}
   lightObj: {fileID: 2093315061232270714, guid: 40c109cddb3676740a886c9a5ac15d9a, type: 3}
   spawnDistance: 5
 --- !u!54 &1328338544
@@ -1405,7 +1406,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: 513b84877d7c3f4409c45b520373a4e1, type: 3}
+  - {fileID: 2100000, guid: 6041060dbda800c48a2e1cd1757a95df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1519,6 +1520,7 @@ GameObject:
   - component: {fileID: 7969032740998828998}
   - component: {fileID: 6429005682640313443}
   - component: {fileID: 9141354872391510185}
+  - component: {fileID: 9141354872391510186}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Untagged
@@ -1564,7 +1566,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6629797300637803691, guid: 513b84877d7c3f4409c45b520373a4e1, type: 3}
+  - {fileID: 2100000, guid: a255a0f2e4f23ee4183d1e6195a2b684, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1586,6 +1588,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9141354872391510186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339848845280479612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01356763e5173134fbf8907015b181f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tansparent: {fileID: 2100000, guid: 46460c3d1a879314cad590fd4851acdc, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1598,3 +1613,5 @@ SceneRoots:
   - {fileID: 1371185736628961641}
   - {fileID: 1766700314}
   - {fileID: 5352619205884979276}
+  - {fileID: 1057824233}
+  - {fileID: 631860645}
