@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     bool grounded;
 
     [Header("Light")]
+    public Transform playerCamera;
     public GameObject lightObj;
     public float spawnDistance;
 
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
         //set up the movement for the light object
         LightShot tempLightObj = tempLight.GetComponent<LightShot>();
         print(tempLightObj);
-        tempLightObj.moveDirection = orientation.forward;
+        tempLightObj.moveDirection = playerCamera.forward;
         //tempLightObj.MoveLight(orientation.forward, 20f);
     }
 
