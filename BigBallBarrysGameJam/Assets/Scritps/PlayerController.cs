@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     bool grounded;
 
     [Header("Light")]
+    public Transform playerCamera;
     public GameObject lightObj;
     public float spawnDistance;
 
@@ -82,7 +83,15 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 lightPos = transform.position + playerObjTransform.forward * spawnDistance;
         print(lightPos);
-        Instantiate(lightObj, lightPos, Quaternion.identity);
+
+        //creates the light object
+        GameObject tempLight = Instantiate(lightObj, lightPos, Quaternion.identity);
+
+        //set up the movement for the light object
+        LightShot tempLightObj = tempLight.GetComponent<LightShot>();
+        print(tempLightObj);
+        tempLightObj.moveDirection = playerCamera.forward;
+        //tempLightObj.MoveLight(orientation.forward, 20f);
     }
 
     //limits the velocity of the player's rigidbody
