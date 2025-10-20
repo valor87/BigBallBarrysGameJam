@@ -1000,6 +1000,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  lightObj: {fileID: 2093315061232270714, guid: 40c109cddb3676740a886c9a5ac15d9a, type: 3}
+  spawnDistance: 10
   orientation: {fileID: 433369845}
 --- !u!54 &1328338544
 Rigidbody:

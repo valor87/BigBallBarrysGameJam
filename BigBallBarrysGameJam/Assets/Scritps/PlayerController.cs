@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //public Transform cameraTransform;
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public Transform orientation;
+    public Transform playerObjTransform;
     [SerializeField] float currentSpeed;
 
     public float groundDrag;
@@ -15,7 +16,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
-    public Transform orientation;
+    [Header("Light")]
+    public GameObject lightObj;
+    public float spawnDistance;
 
     float horizontalInput;
     float verticalInput;
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         GetInput();
+        SpeedControl();
 
         //handle drag
         if (grounded)
@@ -46,30 +50,45 @@ public class PlayerController : MonoBehaviour
             rb.linearDamping = 0;
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         MovePlayer();
         currentSpeed = rb.linearVelocity.magnitude;
     }
 
-    private void GetInput()
+    //handles input from player
+    void GetInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ShootLight();
+        }
     }
 
     //movement is currently jittery
-    private void MovePlayer()
+     void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
  
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force); //moves player by adding a continuous force to its rigid vody
     }
 
-    //limits the velocity of the player's rigidbody
-    private void SpeedControl()
+    //shoots a light when mouse left click is pressed.
+    //currently just makes a light sphere appear
+    void ShootLight()
     {
-        Vector3 currentVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.y);
+        Vector3 lightPos = transform.position + playerObjTransform.forward * spawnDistance;
+        print(lightPos);
+        Instantiate(lightObj, lightPos, Quaternion.identity);
+    }
+
+    //limits the velocity of the player's rigidbody
+    void SpeedControl()
+    {
+        Vector3 currentVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
         if (currentVel.magnitude > moveSpeed)
         {

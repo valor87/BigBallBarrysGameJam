@@ -30,12 +30,14 @@ public class ThirdPersonCam : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+
+        //smoothly rotate the player object with slerp
+        playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+
         //actually rotate the object if there is rotation
         if (inputDir != Vector3.zero)
         {
-            print("rotating this bullshit");
-            //smoothly rotate the player object with slerp
-            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+
         }
 
     }
