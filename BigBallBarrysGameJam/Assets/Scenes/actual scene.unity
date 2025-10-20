@@ -994,6 +994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  orientation: {fileID: 433369845}
+  playerObjTransform: {fileID: 612141517}
   currentSpeed: 0
   groundDrag: 5
   playerHeight: 2
@@ -1002,7 +1004,6 @@ MonoBehaviour:
     m_Bits: 1024
   lightObj: {fileID: 2093315061232270714, guid: 40c109cddb3676740a886c9a5ac15d9a, type: 3}
   spawnDistance: 10
-  orientation: {fileID: 433369845}
 --- !u!54 &1328338544
 Rigidbody:
   m_ObjectHideFlags: 0

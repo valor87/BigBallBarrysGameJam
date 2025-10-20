@@ -10,7 +10,6 @@ public class ThirdPersonCam : MonoBehaviour
 
     public float rotationSpeed;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,20 +24,8 @@ public class ThirdPersonCam : MonoBehaviour
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
-        //check if any rotation occurs
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-
-        //smoothly rotate the player object with slerp
-        playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
-
-        //actually rotate the object if there is rotation
-        if (inputDir != Vector3.zero)
-        {
-
-        }
+        //rotate the player towards where the camera faces
+        playerObj.forward = Vector3.Slerp(playerObj.forward, orientation.forward, Time.deltaTime * rotationSpeed);
 
     }
 }
