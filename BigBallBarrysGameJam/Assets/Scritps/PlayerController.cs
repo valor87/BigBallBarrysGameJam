@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
     public GameObject lightObj;
     public float spawnDistance;
 
+    [Header("Mesh")]
+    public MeshRenderer playerMesh;
+    public Material normalMaterial;
+    public Material transparentMaterial;
+
     float horizontalInput;
     float verticalInput;
 
@@ -38,11 +43,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ground check
+        //check if player is on ground
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         GetInput();
         SpeedControl();
+        checkTransparency();
 
         //handle drag
         if (grounded)
@@ -104,6 +110,19 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 limitedVel = currentVel.normalized * moveSpeed;
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+        }
+    }
+
+    //makes the player transparent when aiming upwards
+    void checkTransparency()
+    {
+        if (playerCamera.position.y < 1.3)
+        {
+            playerMesh.material = transparentMaterial;
+        }
+        else
+        {
+            playerMesh.material = normalMaterial;
         }
     }
 }

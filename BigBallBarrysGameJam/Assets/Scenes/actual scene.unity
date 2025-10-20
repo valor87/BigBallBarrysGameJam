@@ -1169,7 +1169,10 @@ MonoBehaviour:
     m_Bits: 1024
   playerCamera: {fileID: 4244844}
   lightObj: {fileID: 2093315061232270714, guid: 40c109cddb3676740a886c9a5ac15d9a, type: 3}
-  spawnDistance: 5
+  spawnDistance: 2
+  playerMesh: {fileID: 612141515}
+  normalMaterial: {fileID: 2100000, guid: 15b553aa6364c1c479be020917ccd6db, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 33bce37c93447e7409b7faa530dd77b9, type: 2}
 --- !u!54 &1328338544
 Rigidbody:
   m_ObjectHideFlags: 0
