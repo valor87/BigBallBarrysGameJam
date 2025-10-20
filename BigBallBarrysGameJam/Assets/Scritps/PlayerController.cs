@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
     void ShootLight()
     {
         Vector3 lightPos = transform.position + playerObjTransform.forward * spawnDistance;
+        lightPos.y += 1; //make the light sphere spawn a bit higher
         print(lightPos);
 
         //creates the light object
