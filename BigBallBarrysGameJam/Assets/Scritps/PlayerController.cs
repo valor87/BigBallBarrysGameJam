@@ -95,14 +95,12 @@ public class PlayerController : MonoBehaviour
         
         Vector3 lightPos = transform.position + playerObjTransform.forward * spawnDistance;
         lightPos.y += 1; //make the light sphere spawn a bit higher
-        print(lightPos);
 
         //creates the light object
         GameObject tempLight = Instantiate(lightObj, lightPos, Quaternion.identity);
 
         //set up the movement for the light object
         LightShot tempLightObj = tempLight.GetComponent<LightShot>();
-        print(tempLightObj);
         tempLightObj.moveDirection = playerCamera.forward;
     }
 

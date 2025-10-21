@@ -21,8 +21,11 @@ public class LightLinkedObject : MonoBehaviour
             objectMesh = GetComponent<MeshRenderer>();
 
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
         eventCore.linkingLight.AddListener(checkCollision);
+        //connect to the disconnectLink event from EventCore, allowing this to change itself when disconnecting a light link
+        eventCore.disconnectLink.AddListener(checkDisconnection);
 
         updateMaterial();
     }
@@ -38,20 +41,33 @@ public class LightLinkedObject : MonoBehaviour
     //that means they can pick up this event even though they weren't the one that got hit.
     void checkCollision(string collisionName)
     {
+        
+        //if it is this one that got hit, link the light and update the material
+        //usually acts as a switch to activate a puzzle object
         if (collisionName == name)
-            hitByLight();
+        {
+            lightLinked = true;
+
+            updateMaterial();
+        }
+
     }
 
-    //handles what happens when hit by a light shot, light linking and usually turning on a switch
-    void hitByLight()
+    //check if the object that got disconnected is this one
+    void checkDisconnection(string disconnectedObject)
     {
-        lightLinked = !lightLinked;
 
-        updateMaterial();
+        //if it is this one that got disconnected, unlink the light and update the material
+        //usually acts as a switch to deactivate a puzzle object
+        if (disconnectedObject == name)
+        {
+            lightLinked = false;
+
+            updateMaterial();
+        }
 
     }
 
-    //simply updates the material based on whether it is light linked or not
     void updateMaterial()
     {
         if (lightLinked)

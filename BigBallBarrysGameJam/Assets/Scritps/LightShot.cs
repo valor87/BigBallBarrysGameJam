@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class LightShot : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LightShot : MonoBehaviour
     public float moveSpeed;
 
     [Header("Miscellanous")]
+    public GameObject lightLinkPrefab;
     public int killTime = 0;
     
     EventCore eventCore;
@@ -15,8 +17,6 @@ public class LightShot : MonoBehaviour
     Rigidbody rb;
     float timer = 0;
 
-    
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,8 +34,6 @@ public class LightShot : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        
     }
 
     private void FixedUpdate()
@@ -69,14 +67,34 @@ public class LightShot : MonoBehaviour
         //get the LightLinkedObject of the collision, if there is any
         LightLinkedObject lightLinkedObj = collision.gameObject.GetComponent<LightLinkedObject>();
 
-        //check if the object can be light linked
-        if (lightLinkedObj != null)
+        //stop function if the object cannot be light linked
+        if (lightLinkedObj == null)
         {
-            //invokes the event that will handle the linking of light through eventCore
-            eventCore.linkingLight.Invoke(collision.gameObject.name);
-            //lightLinkedObj.lightLinked = !lightLinkedObj.lightLinked;
+            Destroy(gameObject);
+            return;
         }
+
+        //create a light link with eligible object if not done already
+        if (!lightLinkedObj.lightLinked)
+            createLightLink(collision.gameObject);
+            
+        //invokes the event that will handle the linking of light through eventCore
+        eventCore.linkingLight.Invoke(collision.gameObject.name);
         
         Destroy(gameObject);
+    }
+
+    //creates a light link between the player and the light linked object that was hit
+    void createLightLink(GameObject collisionGameObj)
+    {
+        LightLink lightLinkObj = Instantiate(lightLinkPrefab).GetComponent<LightLink>(); //create a light link prefab and get its class
+        Transform playerTransform = GameObject.Find("Player").GetComponent<Transform>(); //get player transform
+
+        //pass in the light linked game object so it deactivates when the light link disconnects
+        lightLinkObj.objectLinkedWith = collisionGameObj;
+
+        //set the light link's transforms
+        lightLinkObj.startTransform = playerTransform;
+        lightLinkObj.endTransform = collisionGameObj.transform;
     }
 }

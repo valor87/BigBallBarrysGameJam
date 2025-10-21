@@ -18,6 +18,8 @@ public class PuzzleObject : MonoBehaviour
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
         eventCore.linkingLight.AddListener(checkCollision);
+        //connect to the disconnectLink event from EventCore, allowing this to change itself when disconnecting a light link
+        eventCore.disconnectLink.AddListener(checkDisconnection);
     }
 
     // Update is called once per frame
@@ -29,18 +31,23 @@ public class PuzzleObject : MonoBehaviour
     //check if the object that a light shot hit is the one specified by targetLLObject
     void checkCollision(string collisionName)
     {
+        //if it is this one, then activate
         if (collisionName == targetLLObject.name)
-            handleActivation();
+        {
+            //this might be redundant because i can just make the physical body disappear, but might be useful for more data later
+            activated = true; 
+            physicalBody.SetActive(false); //makes the body disappear, allowing player to pass through
+        }   
     }
 
-    //makes the physical object appear when not activated and disappear otherwise
-    void handleActivation()
+    //check if the object that got disconnected is the one specified by targetLLObject
+    void checkDisconnection(string disconnectedObject)
     {
-        activated = !activated;
-
-        if (activated)
-            physicalBody.SetActive(false);
-        else
-            physicalBody.SetActive(true);
+        //if it is this one, then deactivate
+        if (disconnectedObject == targetLLObject.name)
+        {
+            activated = false;
+            physicalBody.SetActive(true); //makes the body appear, blocking the player from passing through
+        }
     }
 }

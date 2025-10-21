@@ -151,4 +151,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 50
+  lightLinkPrefab: {fileID: 5876376365780742065, guid: 6c8b928aad5513e4096ee7ac0de5cbe5, type: 3}
   killTime: 5
