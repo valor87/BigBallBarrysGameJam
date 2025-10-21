@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     void ShootLight()
     {
         //decrease a charge by 1
-        lightShotAmount--;
+        //lightShotAmount--;
         
         Vector3 lightPos = transform.position + playerObjTransform.forward * spawnDistance;
         lightPos.y += 1; //make the light sphere spawn a bit higher
