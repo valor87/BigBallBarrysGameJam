@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using System.Collections.Generic;
 
 public class LightShot : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class LightShot : MonoBehaviour
     [Header("Miscellanous")]
     public GameObject lightLinkPrefab;
     public int killTime = 0;
-    
+
+    //for multiple vertices in the light link
+    List<Vector3> linkPositions = new List<Vector3>();
+
     EventCore eventCore;
 
     Rigidbody rb;
@@ -51,12 +55,16 @@ public class LightShot : MonoBehaviour
     //also handles hiting an object that can be light linked or mirrored
     private void OnCollisionEnter(Collision collision)
     {
-        //getting hit by a mirror
+        //check if we're hitting a mirror. will stop function here if it is a mirror
+        if (collision.gameObject.tag == "Mirror")
+        {
+            //mirror the shot, passing in the collision's transform which is the mirror
+            mirroredShot(collision.gameObject.transform);
+            return;
+        }
         
         //get the LightLinkedObject of the collision, if there is any
         LightLinkedObject lightLinkedObj = collision.gameObject.GetComponent<LightLinkedObject>();
-
-        print(lightLinkedObj);
 
         //stop function if the object cannot be light linked
         if (lightLinkedObj == null)
@@ -84,8 +92,19 @@ public class LightShot : MonoBehaviour
         //pass in the light linked game object so it deactivates when the light link disconnects
         lightLinkObj.objectLinkedWith = collisionGameObj;
 
+        lightLinkObj.linkPositions = linkPositions;
+
         //set the light link's transforms
         lightLinkObj.startTransform = playerTransform;
         lightLinkObj.endTransform = collisionGameObj.transform;
+    }
+
+    //changing the direction of the shot, sending it in the direction of the mirror's orientation
+    void mirroredShot(Transform mirror)
+    {
+        Transform mirrorOrientation = mirror.Find("Orientation").transform; //get the mirror's orientation
+        moveDirection = mirrorOrientation.position; //change the shot's direction
+
+        linkPositions.Add(transform.position); //save the current position of the light shot for the light link
     }
 }
