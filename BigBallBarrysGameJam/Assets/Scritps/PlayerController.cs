@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Transform playerCamera;
     public GameObject lightObj;
     public float spawnDistance;
+    [SerializeField] int lightShotAmount = 2;
 
     [Header("Mesh")]
     public MeshRenderer playerMesh;
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; //stop character from falling over
+
+        lightShotAmount = 2;
     }
 
     // Update is called once per frame
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && lightShotAmount > 0)
         {
             ShootLight();
         }
@@ -87,6 +90,9 @@ public class PlayerController : MonoBehaviour
     //currently just makes a light sphere appear
     void ShootLight()
     {
+        //decrease a charge by 1
+        lightShotAmount--;
+        
         Vector3 lightPos = transform.position + playerObjTransform.forward * spawnDistance;
         lightPos.y += 1; //make the light sphere spawn a bit higher
         print(lightPos);
@@ -98,7 +104,6 @@ public class PlayerController : MonoBehaviour
         LightShot tempLightObj = tempLight.GetComponent<LightShot>();
         print(tempLightObj);
         tempLightObj.moveDirection = playerCamera.forward;
-        //tempLightObj.MoveLight(orientation.forward, 20f);
     }
 
     //limits the velocity of the player's rigidbody
