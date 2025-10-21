@@ -1170,6 +1170,9 @@ MonoBehaviour:
   playerCamera: {fileID: 4244844}
   lightObj: {fileID: 2093315061232270714, guid: 40c109cddb3676740a886c9a5ac15d9a, type: 3}
   spawnDistance: 5
+  playerMesh: {fileID: 0}
+  normalMaterial: {fileID: 0}
+  transparentMaterial: {fileID: 0}
 --- !u!54 &1328338544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1445,7 +1448,7 @@ Transform:
   m_GameObject: {fileID: 7102576830729553481}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000059604638, y: 0.67310375, z: 0.000000029802319, w: 0.7395481}
-  m_LocalPosition: {x: 492.3012, y: 1.2038169, z: 538.706}
+  m_LocalPosition: {x: 496.107, y: 2, z: 538.706}
   m_LocalScale: {x: 10.642791, y: 11.755322, z: 10.642789}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1537,8 +1540,8 @@ Transform:
   m_GameObject: {fileID: 7339848845280479612}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 492.31, y: 0.09, z: 538.70886}
-  m_LocalScale: {x: 60, y: 60, z: 8}
+  m_LocalPosition: {x: 496.11578, y: 0.16179004, z: 538.70886}
+  m_LocalScale: {x: 104.016, y: 104.016, z: 13.8688}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1766700314}
