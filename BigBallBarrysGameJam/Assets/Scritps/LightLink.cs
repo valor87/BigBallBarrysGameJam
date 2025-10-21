@@ -31,9 +31,11 @@ public class LightLink : MonoBehaviour
         lineRenderer.SetPosition(0, startTransform.position);
         lineRenderer.SetPosition(1, endTransform.position);
 
+        Vector3 directionVector = endTransform.position - startTransform.position;
+
         //if line is obstructed by a collider, invoke an event that disconnects the link and destroys itself
         //only does this on colliders that are on the "disconnectLightLink" layer
-        if (Physics.Raycast(startTransform.position, endTransform.position, 100, disconnectLightLink))
+        if (Physics.Raycast(startTransform.position, directionVector, Mathf.Infinity, disconnectLightLink))
         {
             eventCore.disconnectLink.Invoke(objectLinkedWith.name);
             Destroy(gameObject);
