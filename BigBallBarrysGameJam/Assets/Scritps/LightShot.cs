@@ -39,31 +39,20 @@ public class LightShot : MonoBehaviour
     private void FixedUpdate()
     {
         MoveLight();
-        SpeedControl();
     }
 
-    //moves light by adding a force to its rigidbody
+    //moves light by setting its linear velocity
     void MoveLight()
     {
-        rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
-    }
-
-    //limits the velocity of the light's rigidbody
-    void SpeedControl()
-    {
-        Vector3 currentVel = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
-
-        if (currentVel.magnitude > moveSpeed)
-        {
-            Vector3 limitedVel = currentVel.normalized * moveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
-        }
+        rb.linearVelocity = moveDirection.normalized * moveSpeed;
     }
 
     //destroys itself upon hitting something
-    //also handles hiting an object that can be light linked
+    //also handles hiting an object that can be light linked or mirrored
     private void OnCollisionEnter(Collision collision)
     {
+        //getting hit by a mirror
+        
         //get the LightLinkedObject of the collision, if there is any
         LightLinkedObject lightLinkedObj = collision.gameObject.GetComponent<LightLinkedObject>();
 
