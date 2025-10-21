@@ -42,6 +42,7 @@ public class LightLinkedObject : MonoBehaviour
         //connect to the disconnectLink event from EventCore, allowing this to change itself when disconnecting a light link
         eventCore.disconnectLink.AddListener(checkDisconnection);
 
+
         updateMaterial();
     }
 
@@ -62,7 +63,6 @@ public class LightLinkedObject : MonoBehaviour
         {
             return;
         }
-
         //if this is a teleporter, invoke an event that will cause the player to teleport to this object
         if (isTeleporter)
         {
@@ -70,7 +70,7 @@ public class LightLinkedObject : MonoBehaviour
             //usually teleports in front of the teleporter with transform.forward, but can be edited with teleportDistance and teleportOffset
             Vector3 newPlayerPos = (transform.position + orientation.forward * teleportDistance) + teleportOffset;
             eventCore.teleportPlayer.Invoke(newPlayerPos);
-
+            
             return;
         }
 
