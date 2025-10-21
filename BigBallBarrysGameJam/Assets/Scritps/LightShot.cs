@@ -75,7 +75,7 @@ public class LightShot : MonoBehaviour
         }
 
         //create a light link with eligible object if not done already
-        if (!lightLinkedObj.lightLinked)
+        if (!lightLinkedObj.lightLinked && !lightLinkedObj.isTeleporter)
             createLightLink(collision.gameObject);
             
         //invokes the event that will handle the linking of light through eventCore

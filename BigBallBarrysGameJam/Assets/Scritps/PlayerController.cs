@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    EventCore eventCore;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,6 +43,10 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true; //stop character from falling over
 
         lightShotAmount = 2;
+
+        eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        //connect to the teleportPlayer event from EventCore, for teleporting obviously
+        eventCore.teleportPlayer.AddListener(moveToTeleporter);
     }
 
     // Update is called once per frame
@@ -127,5 +133,10 @@ public class PlayerController : MonoBehaviour
         {
             playerMesh.material = normalMaterial;
         }
+    }
+
+    void moveToTeleporter(Vector3 teleportPos)
+    {
+        transform.position = teleportPos;
     }
 }
