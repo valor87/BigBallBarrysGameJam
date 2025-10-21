@@ -67,6 +67,8 @@ public class LightShot : MonoBehaviour
         //get the LightLinkedObject of the collision, if there is any
         LightLinkedObject lightLinkedObj = collision.gameObject.GetComponent<LightLinkedObject>();
 
+        print(lightLinkedObj);
+
         //stop function if the object cannot be light linked
         if (lightLinkedObj == null)
         {
