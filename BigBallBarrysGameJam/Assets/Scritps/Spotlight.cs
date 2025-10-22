@@ -28,6 +28,7 @@ public class Spotlight : MonoBehaviour
     public GameObject hitObject;
 
     EventCore eventCore;
+    Transform initialTransform; //initial transform before player intervention, used for reset when player respawns
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,17 +38,21 @@ public class Spotlight : MonoBehaviour
             playerTransform = GameObject.Find("Player").GetComponent<Transform>();
 
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        //connect to the respawn event from EventCore, which will reset this to its original state
+        eventCore.respawn.AddListener(RespawnReset);
+
+        initialTransform = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        checkIfInRange();
-        shootRay();
+        CheckIfInRange();
+        ShootRay();
     }
 
     //function for rotating the gem
-    void rotateSpotlight()
+    void RotateSpotlight()
     {
         //get the spotlight and gear's rotation
         Vector3 newRotation = spotlightTransform.localEulerAngles; 
@@ -114,7 +119,7 @@ public class Spotlight : MonoBehaviour
     }
 
     //check if the player is in range
-    void checkIfInRange()
+    void CheckIfInRange()
     {
         //get vector between player and the spotlight
         Vector3 directionVector = (playerTransform.position - spotlightTransform.position);
@@ -122,7 +127,7 @@ public class Spotlight : MonoBehaviour
         //rotate the spotlight when player is in range
         if (directionVector.magnitude < activatableDistance)
         {
-            rotateSpotlight();
+            RotateSpotlight();
         }
     }
 
@@ -130,7 +135,7 @@ public class Spotlight : MonoBehaviour
     //this theoretically works but i haven't tested it...
     //the transform isn't working properly due to the line renderer not drawing properly (it's so offset for some reason and idk how to fix it)
     //so i don't think the raycast is going to work
-    void shootRay()
+    void ShootRay()
     {
         Vector3 startPos = spotlightTransform.localPosition;
         startPos.y = 0;
@@ -153,5 +158,12 @@ public class Spotlight : MonoBehaviour
             eventCore.disconnectSpotlight.Invoke(hitObject.name); //invoke the event for a connecting spotlight
             hitObject = null; //make hitObject empty since it's not connected to anything now
         }
+    }
+
+    //resets the rotation when player respawns
+    void RespawnReset()
+    {
+        Transform selfTransform = GetComponent<Transform>();
+        selfTransform = initialTransform;
     }
 }

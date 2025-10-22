@@ -19,6 +19,9 @@ public class EventCore : MonoBehaviour
     //event for when a spotlight moves away from an eligible object, disconnecting from it
     public UnityEvent<string> disconnectSpotlight;
 
+    //event for respawning, resetting the player's position and objects in the game
+    public UnityEvent respawn;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

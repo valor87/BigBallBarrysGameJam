@@ -24,6 +24,8 @@ public class LightLink : MonoBehaviour
         lineRenderer.positionCount = 2 + linkPositions.Count; //make a line have an amount of vertices based on link amount, minimum of two for two objects
 
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        //connect to the respawn event from EventCore, which will reset this to its original state
+        eventCore.respawn.AddListener(RespawnReset);
 
     }
 
@@ -53,7 +55,12 @@ public class LightLink : MonoBehaviour
         {
             eventCore.disconnectLink.Invoke(objectLinkedWith.name);
             Destroy(gameObject);
-        }
-            
+        }  
+    }
+
+    //all light links are removed on respawn
+    void RespawnReset()
+    {
+        Destroy(gameObject);
     }
 }

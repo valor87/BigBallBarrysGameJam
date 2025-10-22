@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class LightShot : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class LightShot : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        //connect to the respawn event from EventCore, which will reset this to its original state
+        eventCore.respawn.AddListener(RespawnReset);
     }
 
     // Update is called once per frame
@@ -106,5 +109,11 @@ public class LightShot : MonoBehaviour
         moveDirection = mirrorOrientation.position; //change the shot's direction
 
         linkPositions.Add(transform.position); //save the current position of the light shot for the light link
+    }
+
+    //delete all light shots when player respawns
+    void RespawnReset()
+    {
+        Destroy(gameObject);
     }
 }
