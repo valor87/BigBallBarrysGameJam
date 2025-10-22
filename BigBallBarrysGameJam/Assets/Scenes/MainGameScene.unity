@@ -1758,6 +1758,15 @@ MonoBehaviour:
   teleportPlayer:
     m_PersistentCalls:
       m_Calls: []
+  connectSpotlight:
+    m_PersistentCalls:
+      m_Calls: []
+  disconnectSpotlight:
+    m_PersistentCalls:
+      m_Calls: []
+  respawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1785869641
 Transform:
   m_ObjectHideFlags: 0
