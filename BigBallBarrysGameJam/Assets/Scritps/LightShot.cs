@@ -105,8 +105,11 @@ public class LightShot : MonoBehaviour
     //changing the direction of the shot, sending it in the direction of the mirror's orientation
     void mirroredShot(Transform mirror)
     {
+        //this is scuffed but it works
         Transform mirrorOrientation = mirror.Find("Orientation").transform; //get the mirror's orientation
-        moveDirection = mirrorOrientation.position; //change the shot's direction
+        moveDirection = mirrorOrientation.transform.forward; //change the shot's direction
+
+        //moveDirection *= -1; //negatively multiplies the move direction, however it doesn't work because it just goes towards the player
 
         linkPositions.Add(transform.position); //save the current position of the light shot for the light link
     }
