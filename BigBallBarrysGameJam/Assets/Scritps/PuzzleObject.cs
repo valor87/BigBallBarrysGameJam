@@ -9,6 +9,7 @@ public class PuzzleObject : MonoBehaviour
     [Header("General")]
     //set to true to have a inverted activation (shoot the corresponding light linked object = door closes)
     public bool invertedActivation;
+    public bool OpenDoor;
     [SerializeField] bool activated; 
 
     EventCore eventCore;
@@ -20,7 +21,7 @@ public class PuzzleObject : MonoBehaviour
         {
             activated = true;
         }
-        
+
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
         eventCore.linkingLight.AddListener(checkCollision);
@@ -44,6 +45,8 @@ public class PuzzleObject : MonoBehaviour
         //otherwise, makes it appear, blocking them from passing through
         else
             physicalBody.SetActive(true);
+
+        
     }
 
     //check if the object that a light shot hit is the one specified by targetObject
@@ -54,8 +57,12 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        if (physicalBody.GetComponent<PuzzleDoor>() != null) { 
-            physicalBody.GetComponent<PuzzleDoor>().OpenDoor();
+        if (physicalBody.GetComponent<PuzzleDoor>() != null )
+        {
+            if (!OpenDoor) {
+                OpenDoor = true;
+                physicalBody.GetComponent<PuzzleDoor>().OpenDoor();
+            }
             return;
         }
         //disappear when hit
@@ -75,8 +82,9 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        if (physicalBody.GetComponent<PuzzleDoor>() != null)
+        if (physicalBody.GetComponent<PuzzleDoor>() != null && OpenDoor)
         {
+            OpenDoor = false;
             physicalBody.GetComponent<PuzzleDoor>().CloseDoor();
             return;
         }
