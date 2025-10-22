@@ -1961,6 +1961,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 4244844}
+    - target: {fileID: 3310854865697112975, guid: 7898d1451f01761439589880071ec689, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6673136983266551377, guid: 7898d1451f01761439589880071ec689, type: 3}
       propertyPath: m_LocalPosition.x
       value: 487.7829
@@ -2004,6 +2008,18 @@ PrefabInstance:
     - target: {fileID: 7293140078886731020, guid: 7898d1451f01761439589880071ec689, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293140078886731020, guid: 7898d1451f01761439589880071ec689, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833928603448572975, guid: 7898d1451f01761439589880071ec689, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031911323925381692, guid: 7898d1451f01761439589880071ec689, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2140,6 +2156,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1720978376857988937, guid: 7e6c67c244877e34f9bf84fd232c4be3, type: 3}
+      propertyPath: receiveSpotlight.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1733983001789903247, guid: 7e6c67c244877e34f9bf84fd232c4be3, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.47380447
+      objectReference: {fileID: 0}
+    - target: {fileID: 1733983001789903247, guid: 7e6c67c244877e34f9bf84fd232c4be3, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.97999954
+      objectReference: {fileID: 0}
     - target: {fileID: 2036626168435116022, guid: 7e6c67c244877e34f9bf84fd232c4be3, type: 3}
       propertyPath: m_Name
       value: VerticalSpotlightObject
