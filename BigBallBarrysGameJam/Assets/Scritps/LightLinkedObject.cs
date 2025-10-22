@@ -38,23 +38,19 @@ public class LightLinkedObject : MonoBehaviour
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
 
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
-        eventCore.linkingLight.AddListener(checkCollision);
+        eventCore.linkingLight.AddListener(CheckCollision);
         //connect to the disconnectLink event from EventCore, allowing this to change itself when disconnecting a light link
-        eventCore.disconnectLink.AddListener(checkDisconnection);
+        eventCore.disconnectLink.AddListener(CheckDisconnection);
+        //connect to the respawn event from EventCore, which will reset this to its original state
+        eventCore.respawn.AddListener(RespawnReset);
 
-        updateMaterial();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UpdateMaterial();
     }
 
     //check if the object that a light shot hit is this one.
     //gotta check this since the event for when a light shot hits something will go to every light linked object.
     //that means they can pick up this event even though they weren't the one that got hit.
-    void checkCollision(string collisionName)
+    void CheckCollision(string collisionName)
     {
         
         //stop the function if this object is not the one that got hit
@@ -62,7 +58,6 @@ public class LightLinkedObject : MonoBehaviour
         {
             return;
         }
-
         //if this is a teleporter, invoke an event that will cause the player to teleport to this object
         if (isTeleporter)
         {
@@ -70,7 +65,7 @@ public class LightLinkedObject : MonoBehaviour
             //usually teleports in front of the teleporter with transform.forward, but can be edited with teleportDistance and teleportOffset
             Vector3 newPlayerPos = (transform.position + orientation.forward * teleportDistance) + teleportOffset;
             eventCore.teleportPlayer.Invoke(newPlayerPos);
-
+            
             return;
         }
 
@@ -78,12 +73,12 @@ public class LightLinkedObject : MonoBehaviour
         //usually acts as a switch to activate a puzzle object
         lightLinked = true;
 
-        updateMaterial();
+        UpdateMaterial();
 
     }
 
     //check if the object that got disconnected is this one
-    void checkDisconnection(string disconnectedObject)
+    void CheckDisconnection(string disconnectedObject)
     {
 
         //if it is this one that got disconnected, unlink the light and update the material
@@ -92,16 +87,23 @@ public class LightLinkedObject : MonoBehaviour
         {
             lightLinked = false;
 
-            updateMaterial();
+            UpdateMaterial();
         }
 
     }
 
-    void updateMaterial()
+    void UpdateMaterial()
     {
         if (lightLinked)
             objectMesh.material = linkedMaterial;
         else
             objectMesh.material = normalMaterial;
+    }
+
+    //reset to original state when player respawn
+    void RespawnReset()
+    {
+        lightLinked = false;
+        UpdateMaterial();
     }
 }
