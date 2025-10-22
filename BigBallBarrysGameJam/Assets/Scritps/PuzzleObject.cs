@@ -4,7 +4,7 @@ public class PuzzleObject : MonoBehaviour
 {
     [Header("References")]
     public GameObject physicalBody;
-    public GameObject targetLLObject; //connect the light linked object that will activate this here
+    public GameObject targetObject; //connect the light linked object that will activate this here
 
     [Header("General")]
     //initial value can be set to true to have a negative activation (shoot the corresponding light linked object = door closes)
@@ -20,6 +20,10 @@ public class PuzzleObject : MonoBehaviour
         eventCore.linkingLight.AddListener(checkCollision);
         //connect to the disconnectLink event from EventCore, allowing this to change itself when disconnecting a light link
         eventCore.disconnectLink.AddListener(checkDisconnection);
+
+        //somewhat same as above, but it's for spotlights and not light shots nor light links
+        eventCore.connectSpotlight.AddListener(checkCollision);
+        eventCore.disconnectSpotlight.AddListener(checkDisconnection);
     }
 
     // Update is called once per frame
@@ -28,11 +32,11 @@ public class PuzzleObject : MonoBehaviour
         
     }
 
-    //check if the object that a light shot hit is the one specified by targetLLObject
+    //check if the object that a light shot hit is the one specified by targetObject
     void checkCollision(string collisionName)
     {
         //if it is this one, then activate
-        if (collisionName == targetLLObject.name)
+        if (collisionName == targetObject.name)
         {
             //this might be redundant because i can just make the physical body disappear, but might be useful for more data later
             activated = true; 
@@ -40,11 +44,11 @@ public class PuzzleObject : MonoBehaviour
         }   
     }
 
-    //check if the object that got disconnected is the one specified by targetLLObject
+    //check if the object that got disconnected is the one specified by targetObject
     void checkDisconnection(string disconnectedObject)
     {
         //if it is this one, then deactivate
-        if (disconnectedObject == targetLLObject.name)
+        if (disconnectedObject == targetObject.name)
         {
             activated = false;
             physicalBody.SetActive(true); //makes the body appear, blocking the player from passing through
