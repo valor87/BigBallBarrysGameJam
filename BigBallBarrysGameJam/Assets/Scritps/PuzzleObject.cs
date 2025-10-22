@@ -37,6 +37,7 @@ public class PuzzleObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //when activated, makes the body disappear, allowing player to pass through
         if (activated)
             physicalBody.SetActive(false);
@@ -53,13 +54,17 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        
+        if (physicalBody.GetComponent<PuzzleDoor>() != null) { 
+            physicalBody.GetComponent<PuzzleDoor>().OpenDoor();
+            return;
+        }
         //disappear when hit
         if (!invertedActivation)
             activated = true;
         //appear when hit
         else
             activated = false;
+            
     }
 
     //check if the object that got disconnected is the one specified by targetObject
@@ -70,7 +75,11 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-
+        if (physicalBody.GetComponent<PuzzleDoor>() != null)
+        {
+            physicalBody.GetComponent<PuzzleDoor>().CloseDoor();
+            return;
+        }
         //appear when disconnecting
         if (!invertedActivation)
             activated = false;
