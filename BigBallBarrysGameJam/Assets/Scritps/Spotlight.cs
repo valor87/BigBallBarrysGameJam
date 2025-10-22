@@ -143,18 +143,16 @@ public class Spotlight : MonoBehaviour
         startPos.y = 0;
         lightRay.SetPosition(0, Vector3.zero);
         //lightRay.SetPosition(1, lightRay.transform.forward * rayLength);
-        lightRay.SetPosition(1, new Vector3(0,0,-10));
-
+        lightRay.SetPosition(1, new Vector3(0,0,-15));
+        Ray raycast = new Ray(spotlightTransform.position, spotlightTransform.forward * -1);
 
         //check if it this is hitting an object that is affected by the spotlight. will stop function if it does
-        if (Physics.Raycast(Vector3.zero, new Vector3(0,0,-1), out RaycastHit hit, rayLength, receiveSpotlight))
+        if (Physics.Raycast(raycast, out RaycastHit hit, Mathf.Infinity))
         {
             hitObject = hit.collider.gameObject; //save the object that was hit
             eventCore.connectSpotlight.Invoke(hitObject.name); //invoke the event for a connecting spotlight
-            print("hit");
             return;
         }
-        Debug.DrawLine(Vector3.zero, hit.point, Color.red);
 
         //if the spotlight was connected to something before and moved away from it, disconnect it
         if (hitObject != null)
