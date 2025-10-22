@@ -9,11 +9,11 @@ public class PuzzleObject : MonoBehaviour
     [Header("General")]
     //set to true to have a inverted activation (shoot the corresponding light linked object = door closes)
     public bool invertedActivation;
-    public bool OpenDoor;
     [SerializeField] bool activated; 
 
     EventCore eventCore;
-
+    DrawBridge DrawBridge;
+    PuzzleDoor PuzzleDoor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +21,9 @@ public class PuzzleObject : MonoBehaviour
         {
             activated = true;
         }
+
+        PuzzleDoor = physicalBody.GetComponent<PuzzleDoor>();
+        DrawBridge = physicalBody.GetComponent<DrawBridge>();
 
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
@@ -45,8 +48,6 @@ public class PuzzleObject : MonoBehaviour
         //otherwise, makes it appear, blocking them from passing through
         else
             physicalBody.SetActive(true);
-
-        
     }
 
     //check if the object that a light shot hit is the one specified by targetObject
@@ -57,12 +58,13 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        if (physicalBody.GetComponent<PuzzleDoor>() != null )
+        if (PuzzleDoor != null) {
+            PuzzleDoor.OpenDoor();
+            return;
+        }
+        if (DrawBridge != null)
         {
-            if (!OpenDoor) {
-                OpenDoor = true;
-                physicalBody.GetComponent<PuzzleDoor>().OpenDoor();
-            }
+            DrawBridge.DropBridge();
             return;
         }
         //disappear when hit
@@ -82,10 +84,9 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        if (physicalBody.GetComponent<PuzzleDoor>() != null && OpenDoor)
+        if (PuzzleDoor != null)
         {
-            OpenDoor = false;
-            physicalBody.GetComponent<PuzzleDoor>().CloseDoor();
+            PuzzleDoor.CloseDoor();
             return;
         }
         //appear when disconnecting
