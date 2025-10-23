@@ -11,6 +11,7 @@ public class PuzzleDoor : MonoBehaviour
     BoxCollider TopDoorCollider;
     BoxCollider BottomDoorCollider;
     AudioSource AudioSource;
+    bool running = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,22 +26,28 @@ public class PuzzleDoor : MonoBehaviour
 
     public void OpenDoor()
     {
-        AudioSource.PlayOneShot(DoorOpening);
-        TopDoorCollider.enabled = false;
-        BottomDoorCollider.enabled = false;
-        StartCoroutine(OpenDoor(TopDoor.transform, 1));
-        StartCoroutine(OpenDoor(BottomDoor.transform, -1));
+        if (running)
+        {
+            AudioSource.PlayOneShot(DoorOpening);
+            TopDoorCollider.enabled = false;
+            BottomDoorCollider.enabled = false;
+            StartCoroutine(OpenDoor(TopDoor.transform, 1));
+            StartCoroutine(OpenDoor(BottomDoor.transform, -1));
+            running = false;
+        }
     }
     public void CloseDoor()
     {
-        TopDoorCollider.enabled = true;
-        BottomDoorCollider.enabled = true;
-        StartCoroutine(OpenDoor(TopDoor.transform, -1));
-        StartCoroutine(OpenDoor(BottomDoor.transform, 1));
+        if (!running) {
+            TopDoorCollider.enabled = true;
+            BottomDoorCollider.enabled = true;
+            StartCoroutine(OpenDoor(TopDoor.transform, -1));
+            StartCoroutine(OpenDoor(BottomDoor.transform, 1));
+            running = true;
+        }
     }
     IEnumerator OpenDoor(Transform DoorTransform, float DirectionOfMovement)
     {
-        bool running = true;
         DoorTransform.position = DoorTransform.position + new Vector3(0, 3 * DirectionOfMovement);
         yield return null;
         

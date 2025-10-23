@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 
 public class DrawBridge : MonoBehaviour
 {
+    bool bridgeDown = false;
     public AudioClip clip;
     AudioSource AS;
     Animator animator;
@@ -22,11 +23,14 @@ public class DrawBridge : MonoBehaviour
 
     public void DropBridge()
     {
-        if (!AS.isPlaying)
+        if (!bridgeDown)
         {
-            AS.PlayOneShot(clip);
+            if (!AS.isPlaying)
+            {
+                AS.PlayOneShot(clip);
+            }
+            animator.SetBool("CanDrop", true);
+            bridgeDown = true;
         }
-        animator.SetBool("CanDrop", true);
     }
-   
 }
