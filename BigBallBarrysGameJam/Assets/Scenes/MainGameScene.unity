@@ -1227,6 +1227,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightPole 1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4544251284369862497, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
@@ -2069,6 +2077,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4544251284369862497, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4724613007307091542, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4696844
@@ -2112,6 +2124,14 @@ PrefabInstance:
     - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
       propertyPath: m_Name
       value: LightPole 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2902,7 +2922,7 @@ GameObject:
   - component: {fileID: 128597509}
   - component: {fileID: 128597511}
   - component: {fileID: 128597510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3403,7 +3423,7 @@ GameObject:
   - component: {fileID: 191433513}
   - component: {fileID: 191433515}
   - component: {fileID: 191433514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5844,15 +5864,15 @@ PrefabInstance:
       objectReference: {fileID: 1080254565}
     - target: {fileID: 6673136983266551377, guid: 7898d1451f01761439589880071ec689, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 120
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 6673136983266551377, guid: 7898d1451f01761439589880071ec689, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 57.7
       objectReference: {fileID: 0}
     - target: {fileID: 6673136983266551377, guid: 7898d1451f01761439589880071ec689, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9
+      value: 125.5
       objectReference: {fileID: 0}
     - target: {fileID: 6673136983266551377, guid: 7898d1451f01761439589880071ec689, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12480,7 +12500,7 @@ GameObject:
   - component: {fileID: 689199022}
   - component: {fileID: 689199024}
   - component: {fileID: 689199023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13649,6 +13669,14 @@ PrefabInstance:
     - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
       propertyPath: m_Name
       value: LightPole 1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -15164,6 +15192,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightPole 1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4544251284369862497, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
@@ -15390,6 +15426,14 @@ PrefabInstance:
     - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
       propertyPath: m_Name
       value: LightPole 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -17239,15 +17283,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468673628159486478, guid: b5609aade59a4634a9cffaa0d1516137, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 120
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 468673628159486478, guid: b5609aade59a4634a9cffaa0d1516137, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.67522
+      value: 61.37522
       objectReference: {fileID: 0}
     - target: {fileID: 468673628159486478, guid: b5609aade59a4634a9cffaa0d1516137, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.940277
+      value: 121.55972
       objectReference: {fileID: 0}
     - target: {fileID: 468673628159486478, guid: b5609aade59a4634a9cffaa0d1516137, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33733,7 +33777,7 @@ GameObject:
   - component: {fileID: 1146701203}
   - component: {fileID: 1146701205}
   - component: {fileID: 1146701204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34957,7 +35001,7 @@ Transform:
   m_GameObject: {fileID: 1233148943}
   serializedVersion: 2
   m_LocalRotation: {x: 0.29098827, y: 9.48511e-16, z: -1.3066857e-16, w: 0.9567266}
-  m_LocalPosition: {x: 120, y: 9.67522, z: -12.940277}
+  m_LocalPosition: {x: -7.8, y: 61.37522, z: 121.55972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36648,7 +36692,7 @@ GameObject:
   - component: {fileID: 1341901708}
   - component: {fileID: 1341901710}
   - component: {fileID: 1341901709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37520,7 +37564,7 @@ GameObject:
   - component: {fileID: 1360898922}
   - component: {fileID: 1360898924}
   - component: {fileID: 1360898923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38576,6 +38620,14 @@ PrefabInstance:
     - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
       propertyPath: m_Name
       value: LightPole 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -40397,6 +40449,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightPole 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4544251284369862497, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
@@ -41625,7 +41685,7 @@ GameObject:
   - component: {fileID: 1665774127}
   - component: {fileID: 1665774129}
   - component: {fileID: 1665774128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42185,6 +42245,14 @@ PrefabInstance:
     - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
       propertyPath: m_Name
       value: LightPole 1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -44222,7 +44290,7 @@ GameObject:
   - component: {fileID: 1786709298}
   - component: {fileID: 1786709300}
   - component: {fileID: 1786709299}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48143,6 +48211,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightPole 1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4544251284369862497, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
@@ -51660,6 +51736,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightPole 1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5393872900049269996, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591193163189844953, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4544251284369862497, guid: 1ebe173a9cc5a3b49ad905cc10559584, type: 3}
@@ -51685,7 +51769,7 @@ GameObject:
   - component: {fileID: 2068027918}
   - component: {fileID: 2068027920}
   - component: {fileID: 2068027919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57485,7 +57569,8 @@ GameObject:
   - component: {fileID: 8793389019424919916}
   - component: {fileID: 7454230388150888090}
   - component: {fileID: 9141879215579816062}
-  m_Layer: 0
+  - component: {fileID: 9141879215579816063}
+  m_Layer: 6
   m_Name: DropBridgeSupportBeams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58519,6 +58604,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9141879215579816063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5076509677315091751}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.022112502, y: 0.021166667, z: 0.12809072}
+  m_Center: {x: -0.0003437612, y: 0.0006432604, z: -0.057824068}
 --- !u!4 &9207242143816251901
 Transform:
   m_ObjectHideFlags: 0
