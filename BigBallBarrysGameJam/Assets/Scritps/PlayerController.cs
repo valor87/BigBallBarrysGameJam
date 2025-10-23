@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     EventCore eventCore;
-    
+
+    Animator AN;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +50,8 @@ public class PlayerController : MonoBehaviour
         eventCore.teleportPlayer.AddListener(moveToTeleporter);
         //connect to the respawn event from EventCore, which will reset this to its original state
         eventCore.respawn.AddListener(RespawnReset);
+        // get the animator for player animation
+        AN = transform.GetChild(0).GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,9 +61,9 @@ public class PlayerController : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         GetInput();
+        PlayAnimation();
         SpeedControl();
         checkTransparency();
-
         //handle drag
         if (grounded)
             rb.linearDamping = groundDrag;
@@ -158,5 +161,20 @@ public class PlayerController : MonoBehaviour
     void RespawnReset()
     {
         lightShotAmount = 2;
+    }
+
+    void PlayAnimation()
+    {
+        
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            AN.SetBool("idle", false);
+            AN.SetBool("walking", true);
+        }
+        else
+        {
+            AN.SetBool("idle", true);
+            AN.SetBool("walking", false);
+        }
     }
 }
