@@ -48,6 +48,9 @@ MonoBehaviour:
   horizontalMovement: 0
   activatableDistance: 3
   rayLength: 30
+  receiveSpotlight:
+    serializedVersion: 2
+    m_Bits: 128
   rotationSpeed: 30
   rotationLowerLimit: -45
   rotationUpperLimit: 15
@@ -55,6 +58,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   gearTransform: {fileID: 5374805295640657443}
   lightRay: {fileID: 1733983001789903247}
+  hitObject: {fileID: 0}
 --- !u!1001 &523652338958135763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +74,14 @@ PrefabInstance:
     - target: {fileID: 2257494584997593180, guid: bada4c04665fa1a4eacb59b914b893aa, type: 3}
       propertyPath: m_Parameters.textureMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257494584997593180, guid: bada4c04665fa1a4eacb59b914b893aa, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.47380447
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257494584997593180, guid: bada4c04665fa1a4eacb59b914b893aa, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.97999954
       objectReference: {fileID: 0}
     - target: {fileID: 8746381475814218646, guid: bada4c04665fa1a4eacb59b914b893aa, type: 3}
       propertyPath: m_LocalPosition.x

@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Spotlight : MonoBehaviour
 {
-    //this doesn't work yet btw
-    //go down for a comment that says why
+    //object that you want the spotlight to hit should have the tag "ReceiveSpotlight"
     
     [Header("General")]
     public bool horizontalMovement; //dictates how the spotlight should rotate
@@ -25,7 +24,6 @@ public class Spotlight : MonoBehaviour
     public Transform playerTransform;
     public Transform gearTransform;
     public LineRenderer lightRay;
-    public GameObject hitObject;
 
     EventCore eventCore;
     Transform initialTransform; //initial transform before player intervention, used for reset when player respawns
@@ -42,13 +40,25 @@ public class Spotlight : MonoBehaviour
         eventCore.respawn.AddListener(RespawnReset);
 
         initialTransform = transform;
+
+        //make light ray actually work
+        lightRay.useWorldSpace = false;
+
+        //make light ray appear
+        lightRay.SetPosition(0, Vector3.zero);
+        lightRay.SetPosition(1, new Vector3(0, 0, rayLength));
+
+        //generate a mesh for the line renderer
+        Mesh mesh = new Mesh();
+        lightRay.BakeMesh(mesh, false);
+        //give a mesh renderer to the line renderer. this allows it to detect whether it hits a spotlight receiver
+        lightRay.gameObject.GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckIfInRange();
-        ShootRay();
     }
 
     //function for rotating the gem
@@ -128,37 +138,6 @@ public class Spotlight : MonoBehaviour
         if (directionVector.magnitude < activatableDistance)
         {
             RotateSpotlight();
-        }
-    }
-
-    //shoots the light
-    //this theoretically works but i haven't tested it...
-    //the transform isn't working properly due to the line renderer not drawing properly (it's so offset for some reason and idk how to fix it)
-    //so i don't think the raycast is going to work
-    void ShootRay()
-    {
-        lightRay.useWorldSpace = false;
-        
-        Vector3 startPos = spotlightTransform.localPosition;
-        startPos.y = 0;
-        lightRay.SetPosition(0, Vector3.zero);
-        //lightRay.SetPosition(1, lightRay.transform.forward * rayLength);
-        lightRay.SetPosition(1, new Vector3(0,0,-15));
-        Ray raycast = new Ray(spotlightTransform.position, spotlightTransform.forward * -1);
-
-        //check if it this is hitting an object that is affected by the spotlight. will stop function if it does
-        if (Physics.Raycast(raycast, out RaycastHit hit, Mathf.Infinity))
-        {
-            hitObject = hit.collider.gameObject; //save the object that was hit
-            eventCore.connectSpotlight.Invoke(hitObject.name); //invoke the event for a connecting spotlight
-            return;
-        }
-
-        //if the spotlight was connected to something before and moved away from it, disconnect it
-        if (hitObject != null)
-        {
-            eventCore.disconnectSpotlight.Invoke(hitObject.name); //invoke the event for a connecting spotlight
-            hitObject = null; //make hitObject empty since it's not connected to anything now
         }
     }
 

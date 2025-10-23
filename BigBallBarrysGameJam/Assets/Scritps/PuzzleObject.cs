@@ -12,7 +12,8 @@ public class PuzzleObject : MonoBehaviour
     [SerializeField] bool activated; 
 
     EventCore eventCore;
-
+    DrawBridge DrawBridge;
+    PuzzleDoor PuzzleDoor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +21,10 @@ public class PuzzleObject : MonoBehaviour
         {
             activated = true;
         }
-        
+
+        PuzzleDoor = physicalBody.GetComponent<PuzzleDoor>();
+        DrawBridge = physicalBody.GetComponent<DrawBridge>();
+
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
         eventCore.linkingLight.AddListener(checkCollision);
@@ -54,12 +58,20 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        if (physicalBody.GetComponent<PuzzleDoor>() != null) { 
-            physicalBody.GetComponent<PuzzleDoor>().OpenDoor();
+        if (PuzzleDoor != null) {
+            PuzzleDoor.OpenDoor();
             return;
         }
+        if (DrawBridge != null)
+        {
+            DrawBridge.DropBridge();
+            return;
+        }
+
+        print("activating");
         //disappear when hit
         if (!invertedActivation)
+            
             activated = true;
         //appear when hit
         else
@@ -75,9 +87,9 @@ public class PuzzleObject : MonoBehaviour
         {
             return;
         }
-        if (physicalBody.GetComponent<PuzzleDoor>() != null)
+        if (PuzzleDoor != null)
         {
-            physicalBody.GetComponent<PuzzleDoor>().CloseDoor();
+            PuzzleDoor.CloseDoor();
             return;
         }
         //appear when disconnecting
