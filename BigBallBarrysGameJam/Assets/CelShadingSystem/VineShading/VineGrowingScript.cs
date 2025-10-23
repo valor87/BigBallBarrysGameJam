@@ -13,6 +13,9 @@ public class VineGrowingScript : MonoBehaviour
     Material material;
     BoxCollider boxcollider;
     private bool fullyGrown;
+
+    AudioSource AS;
+    public AudioClip clip;
     void Start()
     {
         material = GetComponent<MeshRenderer>().material;
@@ -29,6 +32,10 @@ public class VineGrowingScript : MonoBehaviour
     }
     public void growTree()
     {
+        if (!AS.isPlaying)
+        {
+            AS.PlayOneShot(clip);
+        }
         StartCoroutine(growVines());
     }
     IEnumerator growVines()
