@@ -67,6 +67,11 @@ public class PuzzleObject : MonoBehaviour
             DrawBridge.DropBridge();
             return;
         }
+        if (DrawBridge != null)
+        {
+            DrawBridge.DropBridge();
+            return;
+        }
 
         print("activating");
         //disappear when hit
