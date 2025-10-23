@@ -66,7 +66,6 @@ public class PuzzleObject : MonoBehaviour
         }
         if (VineGrowingScript != null)
         {
-            print("running");
             VineGrowingScript.growTree();
             return;
         }

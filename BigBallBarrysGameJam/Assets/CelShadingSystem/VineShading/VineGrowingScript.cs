@@ -18,30 +18,23 @@ public class VineGrowingScript : MonoBehaviour
     public AudioClip clip;
     void Start()
     {
+        AS = GetComponent<AudioSource>();
         material = GetComponent<MeshRenderer>().material;
         boxcollider = GetComponent<BoxCollider>();
         boxcollider.enabled = false;
+        AS.volume = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-        }
-    }
     public void growTree()
     {
-        if (!AS.isPlaying)
-        {
-            AS.PlayOneShot(clip);
-        }
         StartCoroutine(growVines());
     }
     IEnumerator growVines()
     {
+        AS.volume = 1f;
+        AS.PlayOneShot(clip);
+        print("running");
         float growValue = material.GetFloat("Grow_");
-
         while (growValue < maxGrow)
         {
             growValue += 1/(GrowTime/refreshRate);
@@ -49,6 +42,7 @@ public class VineGrowingScript : MonoBehaviour
 
             yield return new WaitForSeconds(refreshRate);
         }
+
         boxcollider.enabled = true;
     }
 }

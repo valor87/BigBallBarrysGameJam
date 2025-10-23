@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
         GetInput();
         PlayAnimation();
         SpeedControl();
-        checkTransparency();
         //handle drag
         if (grounded)
             rb.linearDamping = groundDrag;
@@ -127,19 +126,6 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 limitedVel = currentVel.normalized * moveSpeed;
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
-        }
-    }
-
-    //makes the player transparent when aiming upwards
-    void checkTransparency()
-    {
-        if (playerCamera.position.y < 1.3)
-        {
-            playerMesh.material = transparentMaterial;
-        }
-        else
-        {
-            playerMesh.material = normalMaterial;
         }
     }
 
