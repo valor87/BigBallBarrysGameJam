@@ -46,7 +46,7 @@ public class Spotlight : MonoBehaviour
 
         //make light ray appear
         lightRay.SetPosition(0, Vector3.zero);
-        lightRay.SetPosition(1, new Vector3(0, 0, rayLength));
+        lightRay.SetPosition(1, new Vector3(0, 0, -rayLength));
 
         //generate a mesh for the line renderer
         Mesh mesh = new Mesh();
@@ -100,7 +100,6 @@ public class Spotlight : MonoBehaviour
         else if (Input.GetKey(KeyCode.E))
         {
             //comments same as above
-            
             if (horizontalMovement)
             {
                 newRotation.y += rotationSpeed * Time.deltaTime;

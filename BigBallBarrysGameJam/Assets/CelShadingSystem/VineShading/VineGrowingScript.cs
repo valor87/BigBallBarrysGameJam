@@ -25,10 +25,12 @@ public class VineGrowingScript : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            StartCoroutine(growVines());
         }
     }
-
+    public void growTree()
+    {
+        StartCoroutine(growVines());
+    }
     IEnumerator growVines()
     {
         float growValue = material.GetFloat("Grow_");

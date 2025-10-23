@@ -14,6 +14,7 @@ public class PuzzleObject : MonoBehaviour
     EventCore eventCore;
     DrawBridge DrawBridge;
     PuzzleDoor PuzzleDoor;
+    VineGrowingScript VineGrowingScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +25,7 @@ public class PuzzleObject : MonoBehaviour
 
         PuzzleDoor = physicalBody.GetComponent<PuzzleDoor>();
         DrawBridge = physicalBody.GetComponent<DrawBridge>();
+        VineGrowingScript = physicalBody.GetComponent<VineGrowingScript>();
 
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         //connect to the linkingLight event from EventCore, allowing this to change itself when hit by a light shot
@@ -60,6 +62,12 @@ public class PuzzleObject : MonoBehaviour
         }
         if (PuzzleDoor != null) {
             PuzzleDoor.OpenDoor();
+            return;
+        }
+        if (VineGrowingScript != null)
+        {
+            print("running");
+            VineGrowingScript.growTree();
             return;
         }
         if (DrawBridge != null)

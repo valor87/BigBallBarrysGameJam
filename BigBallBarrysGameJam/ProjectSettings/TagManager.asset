@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mirror
   - Harmful
+  - ReceiveSpotlight
   layers:
   - Default
   - TransparentFX
