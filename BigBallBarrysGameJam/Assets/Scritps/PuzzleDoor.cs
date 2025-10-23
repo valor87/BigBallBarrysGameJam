@@ -5,11 +5,12 @@ using UnityEngine.Rendering;
 public class PuzzleDoor : MonoBehaviour
 {
     public bool StartOpen;
-
+    [SerializeField] AudioClip DoorOpening;
     GameObject TopDoor;
     GameObject BottomDoor;
     BoxCollider TopDoorCollider;
     BoxCollider BottomDoorCollider;
+    AudioSource AudioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,10 +19,13 @@ public class PuzzleDoor : MonoBehaviour
 
         TopDoorCollider = TopDoor.GetComponent<BoxCollider>();
         BottomDoorCollider = BottomDoor.GetComponent<BoxCollider>();
+
+        AudioSource = GetComponent<AudioSource>();
     }
 
     public void OpenDoor()
     {
+        AudioSource.PlayOneShot(DoorOpening);
         TopDoorCollider.enabled = false;
         BottomDoorCollider.enabled = false;
         StartCoroutine(OpenDoor(TopDoor.transform, 1));

@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     EventCore eventCore;
 
     Animator AN;
+
+    AudioSource AS;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
         eventCore.respawn.AddListener(RespawnReset);
         // get the animator for player animation
         AN = transform.GetChild(0).GetComponent<Animator>();
+
+        AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -170,9 +174,11 @@ public class PlayerController : MonoBehaviour
         {
             AN.SetBool("idle", false);
             AN.SetBool("walking", true);
+            AS.enabled = true;
         }
         else
         {
+            AS.enabled = false;
             AN.SetBool("idle", true);
             AN.SetBool("walking", false);
         }
