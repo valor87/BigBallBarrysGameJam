@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
 
     public void playGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene(1);
     }
 
     public void hoverOver()
